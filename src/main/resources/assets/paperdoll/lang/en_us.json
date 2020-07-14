@@ -1,0 +1,12 @@
+{
+  "text.autoconfig.paperdoll.title": "Paper Doll",
+  "text.autoconfig.paperdoll.category.default": "Settings",
+  "text.autoconfig.paperdoll.option.render_height": "Doll Height",
+  "text.autoconfig.paperdoll.option.render_width": "Doll Width",
+  "text.autoconfig.paperdoll.option.rotation": "Doll Rotation(Around Y)",
+  "text.autoconfig.paperdoll.option.dynamic_scale": "Dynamic Scale",
+  "text.autoconfig.paperdoll.option.x": "X Position",
+  "text.autoconfig.paperdoll.option.y": "Y Position",
+  "text.autoconfig.paperdoll.option.only_activity": "Only Display When Active(MCPE Style)",
+  "text.autoconfig.paperdoll.option.change_swim_fly": "Move Doll When Swimming of Flying"
+}

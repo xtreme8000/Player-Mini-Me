@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.gitlab.indicode.fabric.paperdoll.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "HudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
