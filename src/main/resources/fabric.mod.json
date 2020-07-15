@@ -1,16 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "paperdoll",
-  "version": "1.16.x",
+  "id": "minime_paperdoll",
+  "version": "${version}",
 
-  "name": "Paper Doll",
-  "description": "Y'know that vanity feature from Old Console and Bedrock? Well here it is!",
+  "name": "Player Mini-Me (Paper Doll)",
+  "description": "Adds a mini version of yourself displayed in the top-left corner of the screen.",
   "authors": [
     "Indicode"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/player-mini-me",
+    "sources": "https://github.com/PheonixVX/Player-Mini-Me"
+    "issues": "https://github.com/PheonixVX/Player-Mini-Me/issues"
+
   },
 
   "license": "CC0-1.0",
