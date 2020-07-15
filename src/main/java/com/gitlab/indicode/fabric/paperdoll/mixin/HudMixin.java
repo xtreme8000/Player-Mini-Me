@@ -41,7 +41,7 @@ public class HudMixin {
         float yaw = player.yaw;
         float headYaw = player.headYaw;
         player.pitch = 0.0f;
-        player.setYaw((float)config.rotation * -1);
+        player.setYaw((float)config.rotation);
         player.setHeadYaw((float)config.rotation);
         int scaleY = MathHelper.ceil((float)config.render_height / (config.dynamic_scale ? player.getHeight() : 2.0f));
         int scaleX = MathHelper.ceil((float)config.render_width / (config.dynamic_scale ? player.getWidth() : 1.0f));
