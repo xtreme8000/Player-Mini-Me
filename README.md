@@ -1,4 +1,4 @@
-# PaperDoll
+# Player Mini-Me
 
 Paper Doll port for Minecraft
 
