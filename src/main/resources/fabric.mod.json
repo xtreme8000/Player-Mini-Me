@@ -6,7 +6,8 @@
   "name": "Player Mini-Me (Paper Doll)",
   "description": "Adds a mini version of yourself displayed in the top-left corner of the screen.",
   "authors": [
-    "Indicode"
+    "Indicode",
+    "PheonixVX"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/player-mini-me",
