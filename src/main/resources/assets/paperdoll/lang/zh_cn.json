@@ -1,0 +1,12 @@
+{
+  "text.autoconfig.paperdoll.title": "纸娃娃 §b(Paper Doll)",
+  "text.autoconfig.paperdoll.category.default": "设置",
+  "text.autoconfig.paperdoll.option.render_height": "模型高度",
+  "text.autoconfig.paperdoll.option.render_width": "模型宽度",
+  "text.autoconfig.paperdoll.option.rotation": "模型面向 (水平旋转)",
+  "text.autoconfig.paperdoll.option.dynamic_scale": "动态尺寸",
+  "text.autoconfig.paperdoll.option.x": "横向位置",
+  "text.autoconfig.paperdoll.option.y": "纵向位置",
+  "text.autoconfig.paperdoll.option.only_activity": "只在运动时显示模型 (类似基岩版)",
+  "text.autoconfig.paperdoll.option.change_swim_fly": "在游泳和滑翔时调整模型位置"
+}
