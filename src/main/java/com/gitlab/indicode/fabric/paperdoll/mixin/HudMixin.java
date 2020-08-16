@@ -43,41 +43,37 @@ public class HudMixin {
             return;
         }
         
+        EntityRenderDispatcher entityRenderDispatcher = this.client.getEntityRenderManager();
+        MatrixStack matrixStack = new MatrixStack();
+        
         // Store sensitive info to put back later
         float pitch = player.pitch;
         float yaw = player.yaw;
         float headYaw = player.headYaw;
         RenderSystem.pushMatrix();
+        boolean entityShadows = entityRenderDispatcher.gameOptions.entityShadows;
 
-        // Setting the doll to be neutral
+        // Setting the doll to be neutral, and position and scale
         player.pitch = 0.0f;
-        player.setYaw((float)config.rotation);
-        player.setHeadYaw((float)config.rotation);
+        player.setYaw(180.0f - (float)config.rotation);
+        player.setHeadYaw(180.0f - (float)config.rotation);
         float glY = (float)config.y + (20.0f + (float)config.render_height / 2.0f);
         float glX = (float)config.x + 20.0f;
         int scaleY = MathHelper.ceil((float)config.render_height / (config.dynamic_scale ? player.getHeight() : 2.0f));
         int scaleX = MathHelper.ceil((float)config.render_width / (config.dynamic_scale ? player.getWidth() : 1.0f));
-        float scale = Math.min(scaleX, scaleY);
-
+        float scale = Math.min(scaleX, scaleY) * -1.0f;        
+        
         RenderSystem.translatef(glX, glY - (config.change_swim_fly && (player.isSwimming() || player.isFallFlying()) ? (float)config.render_height / 2.0f : 0.0f), 50.0f);
-
-        MatrixStack matrixStack = new MatrixStack();
         matrixStack.scale(scale, scale, scale);
 
-        // Turn the doll upright and looking at the middle of the screen
-        Quaternion quaternion = Vector3f.POSITIVE_X.getDegreesQuaternion(180.0f);
-        Quaternion quaternion2 = Vector3f.POSITIVE_Y.getDegreesQuaternion(180.0f);
-        quaternion.hamiltonProduct(quaternion2);
-        matrixStack.multiply(quaternion);
-
-        EntityRenderDispatcher entityRenderDispatcher = this.client.getEntityRenderManager();
+        // Render the doll
         entityRenderDispatcher.setRenderShadows(false);
         VertexConsumerProvider.Immediate immediate = this.client.getBufferBuilders().getEntityVertexConsumers();
         entityRenderDispatcher.render(player, 0.0, 0.0, 0.0, 0.0f, 1.0f, matrixStack, immediate, 0xF000F0);
         immediate.draw();
-        entityRenderDispatcher.setRenderShadows(true);
 
         // Put back the info we stored earlier
+        entityRenderDispatcher.setRenderShadows(entityShadows);
         RenderSystem.popMatrix();
         player.pitch = pitch;
         player.setYaw(yaw);
