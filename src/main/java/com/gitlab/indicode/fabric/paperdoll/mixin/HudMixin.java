@@ -40,7 +40,7 @@ public class HudMixin {
             return;
         }
         
-        EntityRenderDispatcher entityRenderDispatcher = this.client.getEntityRenderManager();
+        EntityRenderDispatcher entityRenderDispatcher = this.client.getEntityRenderDispatcher();
         MatrixStack matrixStack = new MatrixStack();
         
         // Store sensitive info to put back later

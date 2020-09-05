@@ -20,19 +20,19 @@ repositories {
 
 dependencies {
 	//to change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:1.16.1"
-	mappings "net.fabricmc:yarn:1.16.1+build.21:v2"
-	modCompile "net.fabricmc:fabric-loader:0.9.0+build.204"
-	modCompile "me.shedaniel.cloth:config-2:4.6.0"
-	include "me.shedaniel.cloth:config-2:4.6.0"
-	modCompile "me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable"
-	include "me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable"
+	minecraft "com.mojang:minecraft:1.16.2"
+	mappings "net.fabricmc:yarn:1.16.2+build.46:v2"
+	modImplementation "net.fabricmc:fabric-loader:0.9.3+build.207"
+	modImplementation "me.shedaniel.cloth:config-2:4.8.1"
+	include "me.shedaniel.cloth:config-2:4.8.1"
+	modImplementation "me.sargunvohra.mcmods:autoconfig1u:3.2.2"
+	include "me.sargunvohra.mcmods:autoconfig1u:3.2.2"
 
 	// not required, but we want to see our config screen
-	modCompile "io.github.prospector:modmenu:1.14.0+build.24"
+	modImplementation "io.github.prospector:modmenu:1.14.6+build.31"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modCompile "net.fabricmc.fabric-api:fabric-api:0.14.1+build.372-1.16"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:0.20.1+build.401-1.16"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
