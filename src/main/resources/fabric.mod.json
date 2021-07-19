@@ -22,10 +22,10 @@
   "environment": "client",
   "entrypoints": {
     "modmenu": [
-      "com.gitlab.indicode.fabric.paperdoll.ModMenuIntegration"
+      "io.github.phoenixvx.paperdoll.ModMenuIntegration"
     ],
     "main": [
-      "com.gitlab.indicode.fabric.paperdoll.PaperDoll"
+      "io.github.phoenixvx.paperdoll.PaperDoll"
     ]
   },
   "mixins": [
@@ -35,6 +35,6 @@
   "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": ">=1.17"
   }
 }

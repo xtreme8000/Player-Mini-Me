@@ -1,4 +1,4 @@
-package com.gitlab.indicode.fabric.paperdoll;
+package io.github.phoenixvx.paperdoll;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;

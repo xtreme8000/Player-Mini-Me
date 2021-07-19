@@ -1,4 +1,4 @@
-package com.gitlab.indicode.fabric.paperdoll;
+package io.github.phoenixvx.paperdoll;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

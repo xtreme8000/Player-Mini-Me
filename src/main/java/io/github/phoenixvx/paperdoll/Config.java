@@ -1,4 +1,4 @@
-package com.gitlab.indicode.fabric.paperdoll;
+package io.github.phoenixvx.paperdoll;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

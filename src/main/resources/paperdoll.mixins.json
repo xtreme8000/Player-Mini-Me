@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.gitlab.indicode.fabric.paperdoll.mixin",
+  "package": "io.github.phoenixvx.paperdoll.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
