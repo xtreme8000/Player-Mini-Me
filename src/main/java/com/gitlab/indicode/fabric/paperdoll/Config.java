@@ -1,18 +1,55 @@
 package com.gitlab.indicode.fabric.paperdoll;
 
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Indigo A.
  */
-@me.sargunvohra.mcmods.autoconfig1u.annotation.Config(name = "paperdoll")
-public class Config implements ConfigData {
+public class Config {
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
     public int render_height = 50;
     public int render_width = 25;
-    public int y = 10;
-    public int x = 10;
     public int rotation = 20;
-    public boolean change_swim_fly = true;
     public boolean dynamic_scale = false;
+    public int x = 10;
+    public int y = 10;
     public boolean only_activity = false;
+    public boolean change_swim_fly = true;
+
+    public static Config loadConfig(File file) {
+        Config config;
+
+        if (file.exists() && file.isFile()) {
+            try (
+                    FileInputStream fileInputStream = new FileInputStream(file);
+                    InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader)
+            ) {
+                config = GSON.fromJson(bufferedReader, Config.class);
+            } catch (IOException e) {
+                throw new RuntimeException("[Player Mini-Me] Failed to load config", e);
+            }
+        } else {
+            config = new Config();
+        }
+
+        config.saveConfig(file);
+
+        return config;
+    }
+
+    public void saveConfig(File config) {
+        try (
+                FileOutputStream stream = new FileOutputStream(config);
+                Writer writer = new OutputStreamWriter(stream, StandardCharsets.UTF_8)
+        ) {
+            GSON.toJson(this, writer);
+        } catch (IOException e) {
+            PaperDoll.LOGGER.error("Failed to save config");
+        }
+    }
 }
