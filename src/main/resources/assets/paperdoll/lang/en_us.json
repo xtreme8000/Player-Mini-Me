@@ -1,5 +1,6 @@
 {
   "text.paperdoll.title": "Paper Doll",
+  "text.paperdoll.general": "General",
   "text.paperdoll.option.render_height": "Doll Height",
   "text.paperdoll.option.render_width": "Doll Width",
   "text.paperdoll.option.rotation": "Doll Rotation(Around Y)",
