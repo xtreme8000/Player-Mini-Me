@@ -11,7 +11,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.text.TranslatableText;
 
 /**
- * @author Indigo A.
+ * @author Indigo A., xtreme8000
  */
 @Environment(EnvType.CLIENT)
 public class ModMenuIntegration implements ModMenuApi {

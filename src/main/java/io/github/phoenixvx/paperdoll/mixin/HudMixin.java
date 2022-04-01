@@ -21,6 +21,9 @@ import net.minecraft.util.math.Quaternion;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 
+/**
+ * @author Indigo A., PhoenixVX, xtreme8000
+ */
 @Mixin(InGameHud.class)
 public class HudMixin {
     @Shadow
