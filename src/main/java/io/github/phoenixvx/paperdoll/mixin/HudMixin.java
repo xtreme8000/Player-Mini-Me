@@ -1,6 +1,13 @@
 // Decompiled with: CFR 0.150
 package io.github.phoenixvx.paperdoll.mixin;
 
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import io.github.phoenixvx.paperdoll.PaperDoll;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -8,13 +15,11 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import net.minecraft.util.math.Quaternion;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
 
 @Mixin(InGameHud.class)
 public class HudMixin {
@@ -40,36 +45,37 @@ public class HudMixin {
         EntityRenderDispatcher entityRenderDispatcher = this.client.getEntityRenderDispatcher();
         
         // Store sensitive info to put back later
-        float pitch = player.getPitch();
-        float yaw = player.getYaw();
-        float headYaw = player.headYaw;
-        matrices.push();
         boolean entityShadows = entityRenderDispatcher.gameOptions.entityShadows;
 
         // Setting the doll to be neutral, and position and scale
-        player.setPitch(0.0F);
-        player.setBodyYaw(180.0f - (float)PaperDoll.config.rotation);
-        player.setHeadYaw(180.0f - (float)PaperDoll.config.rotation);
         float glY = (float)PaperDoll.config.y + (20.0f + (float)PaperDoll.config.render_height / 2.0f);
         float glX = (float)PaperDoll.config.x + 20.0f;
         int scaleY = MathHelper.ceil((float)PaperDoll.config.render_height / (PaperDoll.config.dynamic_scale ? player.getHeight() : 2.0f));
         int scaleX = MathHelper.ceil((float)PaperDoll.config.render_width / (PaperDoll.config.dynamic_scale ? player.getWidth() : 1.0f));
         float scale = Math.min(scaleX, scaleY) * -1.0f;
 
+        matrices.push();
         matrices.translate(glX, glY - (PaperDoll.config.change_swim_fly && (player.isSwimming() || player.isFallFlying()) ? (float) PaperDoll.config.render_height / 2.0f : 0.0f), 50.0f);
         matrices.scale(scale, scale, scale);
+        matrices.multiply(Quaternion.fromEulerXyzDegrees(new Vec3f(0.0f, player.bodyYaw - 180.0f + (float) PaperDoll.config.rotation, 0.0f)));
 
         // Render the doll
         entityRenderDispatcher.setRenderShadows(false);
+
         VertexConsumerProvider.Immediate immediate = this.client.getBufferBuilders().getEntityVertexConsumers();
         entityRenderDispatcher.render(player, 0.0, 0.0, 0.0, 0.0f, 1.0f, matrices, immediate, 0xF000F0);
+
+        if (player.hasVehicle()) {
+            Entity v = player.getVehicle();
+            Vec3d offset = player.getPos().subtract(v.getPos()).negate();
+
+            entityRenderDispatcher.render(v, offset.getX(), offset.getY(), offset.getZ(), 0.0f, 1.0f, matrices, immediate, 0xF000F0);
+        }
+
         immediate.draw();
 
         // Put back the info we stored earlier
         entityRenderDispatcher.setRenderShadows(entityShadows);
         matrices.pop();
-        player.setPitch(pitch);
-        player.setBodyYaw(yaw);
-        player.setHeadYaw(headYaw);
     }
 }
