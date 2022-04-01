@@ -19,6 +19,7 @@ public class Config {
     public int y = 10;
     public boolean only_activity = false;
     public boolean change_swim_fly = true;
+    public boolean render_vehicle = true;
 
     public static Config loadConfig(File file) {
         Config config;

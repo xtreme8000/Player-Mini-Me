@@ -8,5 +8,6 @@
   "text.paperdoll.option.x": "X Position",
   "text.paperdoll.option.y": "Y Position",
   "text.paperdoll.option.only_activity": "Only Display When Active(MCPE Style)",
-  "text.paperdoll.option.change_swim_fly": "Move Doll When Swimming of Flying"
+  "text.paperdoll.option.change_swim_fly": "Move Doll When Swimming of Flying",
+  "text.paperdoll.option.render_vehicle": "Render mounted vehicle"
 }

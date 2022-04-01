@@ -65,7 +65,7 @@ public class HudMixin {
         VertexConsumerProvider.Immediate immediate = this.client.getBufferBuilders().getEntityVertexConsumers();
         entityRenderDispatcher.render(player, 0.0, 0.0, 0.0, 0.0f, 1.0f, matrices, immediate, 0xF000F0);
 
-        if (player.hasVehicle()) {
+        if (player.hasVehicle() && PaperDoll.config.render_vehicle) {
             Entity v = player.getVehicle();
             Vec3d offset = player.getPos().subtract(v.getPos()).negate();
 

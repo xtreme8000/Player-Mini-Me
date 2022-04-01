@@ -78,6 +78,13 @@ public class ModMenuIntegration implements ModMenuApi {
 								PaperDoll.saveConfig();
 							}).build());
 
+			general.addEntry(
+					entryBuilder.startBooleanToggle(new TranslatableText("text.paperdoll.option.render_vehicle"),
+							PaperDoll.config.render_vehicle).setDefaultValue(true).setSaveConsumer(o -> {
+								PaperDoll.config.render_vehicle = (boolean) o;
+								PaperDoll.saveConfig();
+							}).build());
+
 			return builder.build();
 		};
 	}
