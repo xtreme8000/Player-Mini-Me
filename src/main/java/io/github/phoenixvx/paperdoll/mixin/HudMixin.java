@@ -16,6 +16,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Quaternion;
 import net.minecraft.util.math.Vec3d;
@@ -71,6 +72,10 @@ public class HudMixin {
         if (player.hasVehicle() && PaperDoll.config.render_vehicle) {
             Entity v = player.getVehicle();
             Vec3d offset = player.getPos().subtract(v.getPos()).negate();
+
+            if (v instanceof BoatEntity) {
+                matrices.multiply(Quaternion.fromEulerXyzDegrees(new Vec3f(0.0f, -player.bodyYaw, 0.0f)));
+            }
 
             entityRenderDispatcher.render(v, offset.getX(), offset.getY(), offset.getZ(), 0.0f, 1.0f, matrices, immediate, 0xF000F0);
         }
